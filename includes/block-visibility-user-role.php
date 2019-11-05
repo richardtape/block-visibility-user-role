@@ -56,7 +56,7 @@ function enqueue_editor_assets() { // phpcs:ignore
 	foreach ( $roles as $role_id => $role_details ) {
 		$role_names[] = array(
 			'label' => $role_details['name'],
-			'value' => sanitize_title_with_dashes( $role_details['name'] )
+			'value' => sanitize_title_with_dashes( $role_details['name'] ),
 		);
 	}
 
@@ -82,7 +82,7 @@ add_filter( 'block_visibility_rule_types_and_callbacks', __NAMESPACE__ . '\\add_
  */
 function add_rule_type_and_callback( $default_rule_types_and_callbacks ) {
 
-	$default_rule_types_and_callbacks['userRole'] = __NAMESPACE__ . 'rule_logic_user_role';
+	$default_rule_types_and_callbacks['userRole'] = __NAMESPACE__ . '\rule_logic_user_role';
 
 	return $default_rule_types_and_callbacks;
 
@@ -91,12 +91,16 @@ function add_rule_type_and_callback( $default_rule_types_and_callbacks ) {
 /**
  * Undocumented function
  *
- * @param string $rule_value What the rule is set to: 'logged-in' or 'logged-out'.
+ * @param array  $rule_value Which roles are selected for this block.
  * @param string $block_visibility Whether the block should be shown or hidden if the rule is true.
  * @param array  $block The full block.
  * @return bool  false if the block is to be removed. true if the block is to be potentially kept.
  */
 function rule_logic_user_role( $rule_value, $block_visibility, $block ) {
+
+	if ( ! is_array( $rule_value ) ) {
+		$rule_value = array();
+	}
 
 	$authenticated_user = is_user_logged_in();
 
@@ -112,10 +116,25 @@ function rule_logic_user_role( $rule_value, $block_visibility, $block ) {
 		}
 	}
 
-	$user  = wp_get_current_user();
-	$roles = (array) $user->roles;
+	$user        = wp_get_current_user();
+	$users_roles = (array) $user->roles;
 
-	// @TODO: This!
-	return true;
+	$users_role_is_in_block_roles_list = false;
+
+	// Test if [any of] the user's role[s] are in the passed block's roles.
+	foreach ( $users_roles as $id => $users_role_slug ) {
+
+		if ( in_array( $users_role_slug, array_keys( $rule_value ), true ) && 1 === absint( $rule_value[ $users_role_slug ] ) ) {
+			$users_role_is_in_block_roles_list = true;
+		}
+	}
+
+	switch ( $block_visibility ) {
+		case 'shown':
+			return $users_role_is_in_block_roles_list;
+
+		case 'hidden':
+			return ! $users_role_is_in_block_roles_list;
+	}
 
 }//end rule_logic_user_role()

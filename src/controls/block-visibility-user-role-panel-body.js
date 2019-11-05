@@ -1,50 +1,37 @@
-import { RadioControl, PanelBody, PanelRow } from '@wordpress/components';
-import { withState } from '@wordpress/compose';
+import { PanelBody, PanelRow } from '@wordpress/components';
+import { withInstanceId } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
-import { doAction } from '@wordpress/hooks';
 
-export const BlockVisibilityUserRolePanelBodyControl = withState( {
-    option: '',
-} )( ( { option, setState, props } ) => {
+import { CheckboxGroupCheckbox }  from './block-visibility-role-checkbox';
+
+function BlockVisibilityUserRolePanelBodyControl( { instanceId, props } ) {
 
     // Fetch the  roles from PHP
     const userRoles = BlockVisibilityUserRole.roles;
 
-    return (
+    // userRoles is an array of objects, for each registered user role.
+    // Each role object looks like: {label: "Administrator", value: "administrator"}
 
+    const id = `bv-roles-${ instanceId }`;
+
+    return (
         <PanelBody
             title={ __( 'User Role', 'block-visibility-user-role' ) }
             initialOpen={ false }
             className="block-visibility-control-panel block-visibility-user-role-controls"
         >
             <PanelRow>
-                <RadioControl
-                    label=''
-                    help=''
-                    className="block-visibility-user-role-control"
-                    selected={ props.attributes.blockVisibilityRules.userRole || option }
-                    options={ userRoles }
-                    onChange={ ( option ) => {
-
-                        // Set the state and props.
-                        setState( { option } );
-
-                        let newBVRules = { ...props.attributes.blockVisibilityRules };
-                        newBVRules.userRole = option;
-
-                        props.setAttributes( {
-                            blockVisibilityRules: newBVRules,
-                        } );
-
-                        // Fire an action so we can see what's happened in other controls. This can be useful,
-                        // for example when setting rules for roles - pointless if a user isn't signed in.
-                        doAction( 'blockVisibility.onChange.userRole', 'block-visibility/onChange', option, props );
-
-                    } }
-                />
+                <ul>
+                {
+                    userRoles.map( role => (
+                        <CheckboxGroupCheckbox name={ id } id={ id } props={ props } role={ role } key={ props.clientId + role.value } />
+                    ) )
+                }
+                </ul>
             </PanelRow>
         </PanelBody>
-
     );
 
-} );
+}
+
+export default withInstanceId( BlockVisibilityUserRolePanelBodyControl );

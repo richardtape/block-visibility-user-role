@@ -1,13 +1,13 @@
 import { Fill, Disabled } from '@wordpress/components';
-import { withState } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 import { registerPlugin } from '@wordpress/plugins';
+import { addFilter } from '@wordpress/hooks';
 
-import { BlockVisibilityUserRolePanelBodyControl } from './block-visibility-user-role-panel-body';
+import BlockVisibilityUserRolePanelBodyControl from './block-visibility-user-role-panel-body';
 
-export const BlockVisibilityUserRoleControl = withState( {
-    option: '',
-} )( ( { option, setState, props } ) => {
+export function BlockVisibilityUserRoleControl( data ) {
+
+    let { props } = { ...data };
 
     let rulesEnabled = props.attributes.blockVisibilityRules.blockVisibilityRulesEnabled;
 
@@ -21,7 +21,7 @@ export const BlockVisibilityUserRoleControl = withState( {
         <BlockVisibilityUserRolePanelBodyControl props={ props } />
     );
 
-} );
+}
 
 /**
  * Render the <BlockVisibilityUserRoleControl> component by adding
@@ -46,3 +46,15 @@ function BlockVisibilityUserRoleFill() {
 
 // Add our component to the Slot provided by BlockVisibilityControls
 registerPlugin( 'block-visibility-02-user-role-fill', { render: BlockVisibilityUserRoleFill } );
+
+
+// Register our visibility rule with the main plugin
+addFilter( 'blockVisibility.defaultBlockVisibilityRules', 'block-visibility-user-role/block-visibility-rules', registerBlockVisibilityRule );
+
+function registerBlockVisibilityRule( defaultRules ) {
+
+    defaultRules.userRole = {};
+
+    return defaultRules;
+
+}
