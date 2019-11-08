@@ -239,8 +239,9 @@ function BlockVisibilityUserRoleControl(data) {
       props = _data.props;
 
   var rulesEnabled = props.attributes.blockVisibilityRules.blockVisibilityRulesEnabled;
+  var blockVisibility = props.attributes.hasOwnProperty('blockVisibility');
 
-  if (!rulesEnabled) {
+  if (!rulesEnabled || !blockVisibility) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Disabled"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_block_visibility_user_role_panel_body__WEBPACK_IMPORTED_MODULE_6__["default"], {
       props: props
     }));

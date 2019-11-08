@@ -9,9 +9,10 @@ export function BlockVisibilityUserRoleControl( data ) {
 
     let { props } = { ...data };
 
-    let rulesEnabled = props.attributes.blockVisibilityRules.blockVisibilityRulesEnabled;
+    let rulesEnabled    = props.attributes.blockVisibilityRules.blockVisibilityRulesEnabled;
+    let blockVisibility = props.attributes.hasOwnProperty( 'blockVisibility' );
 
-    if ( ! rulesEnabled ) {
+    if ( ! rulesEnabled || ! blockVisibility ) {
         return (
             <Disabled><BlockVisibilityUserRolePanelBodyControl props={ props } /></Disabled>
         );
