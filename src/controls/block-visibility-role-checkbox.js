@@ -11,7 +11,7 @@ export const CheckboxGroupCheckbox = ( data ) => {
 
     // If we have persisted data for this role, and it is set to "1" then the checkbox should be checked
     // otherwise we fall back to whatever isChecked is which will change when someone alters the value of the checkbox
-    let thisChecked = persistedData.userRole.hasOwnProperty( roleSlug ) && '1' === props.attributes.blockVisibilityRules.userRole[ roleSlug ];
+    let thisChecked = persistedData.hasOwnProperty( 'userRole' ) && persistedData.userRole.hasOwnProperty( roleSlug ) && '1' === props.attributes.blockVisibilityRules.userRole[ roleSlug ];
 
     return (
         <CheckboxControl

@@ -132,7 +132,7 @@ var CheckboxGroupCheckbox = function CheckboxGroupCheckbox(data) {
   var persistedData = props.attributes.blockVisibilityRules; // If we have persisted data for this role, and it is set to "1" then the checkbox should be checked
   // otherwise we fall back to whatever isChecked is which will change when someone alters the value of the checkbox
 
-  var thisChecked = persistedData.userRole.hasOwnProperty(roleSlug) && '1' === props.attributes.blockVisibilityRules.userRole[roleSlug];
+  var thisChecked = persistedData.hasOwnProperty('userRole') && persistedData.userRole.hasOwnProperty(roleSlug) && '1' === props.attributes.blockVisibilityRules.userRole[roleSlug];
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["CheckboxControl"], {
     label: role.label,
     checked: thisChecked,

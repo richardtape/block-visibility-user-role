@@ -31,6 +31,8 @@ function enqueue_editor_assets() { // phpcs:ignore
 		'page',
 	);
 
+	$screens = apply_filters( 'block_visibility_enqueue_editor_assets_screens', $screens );
+
 	if ( ! in_array( get_current_screen()->id, array_values( $screens ), true ) ) {
 		return;
 	}
