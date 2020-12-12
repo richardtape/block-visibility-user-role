@@ -29,6 +29,10 @@ function BlockVisibilityUserRolePanelBodyControl( { instanceId, props } ) {
                 }
                 </ul>
             </PanelRow>
+
+            { props.attributes.blockVisibility && (
+                <p class="user-role-help-intro block-visibility-help-text">{ __( 'Select one more more roles to whom this block will be ' + props.attributes.blockVisibility + '. If no roles are selected, this block will be ' + props.attributes.blockVisibility + ' regardless of a user\'s role.', 'block-visibility-user-role' ) }</p>
+            ) }
         </PanelBody>
     );
 
