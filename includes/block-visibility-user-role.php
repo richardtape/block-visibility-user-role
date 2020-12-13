@@ -100,8 +100,9 @@ function add_rule_type_and_callback( $default_rule_types_and_callbacks ) {
  */
 function rule_logic_user_role( $rule_value, $block_visibility, $block ) {
 
-	if ( ! is_array( $rule_value ) ) {
-		$rule_value = array();
+	// Make sure we're not touching this block if no roles are set. keep this block to let others decide.
+	if ( ! is_array( $rule_value ) || empty( $rule_value ) ) {
+		return true;
 	}
 
 	$authenticated_user = is_user_logged_in();
