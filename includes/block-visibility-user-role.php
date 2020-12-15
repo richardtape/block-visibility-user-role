@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Main loader file for Block Visibility User Role Add-on.
+ * Main loader file for Content Visibility User Role Add-on.
  *
- * @package BlockVisibilityUserRole
+ * @package ContentVisibilityUserRole
  */
 
-namespace RichardTape\BlockVisibilityUserRole;
+namespace RichardTape\ContentVisibilityUserRole;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
