@@ -15,6 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets', 30 );
 
+if ( function_exists( 'gutenberg_use_widgets_block_editor' ) && gutenberg_use_widgets_block_editor() ) {
+	add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_editor_assets' );
+}
+
 /**
  * Enqueue script and style assets used in the editor.
  *
@@ -29,6 +33,7 @@ function enqueue_editor_assets() { // phpcs:ignore
 	$screens = array(
 		'post',
 		'page',
+		'appearance_page_gutenberg-widgets',
 	);
 
 	$screens = apply_filters( 'block_visibility_enqueue_editor_assets_screens', $screens );
@@ -70,7 +75,7 @@ function enqueue_editor_assets() { // phpcs:ignore
 
 	wp_enqueue_script( 'block-visibility-user-role' );
 
-	wp_enqueue_style( 'block-visibility-user-role-panel', plugins_url( 'build/editor.css', dirname( __FILE__ ) ) );
+	wp_enqueue_style( 'block-visibility-user-role-panel', plugins_url( 'build/index.css', dirname( __FILE__ ) ) );
 
 }//end enqueue_editor_assets()
 
