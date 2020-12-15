@@ -292,7 +292,7 @@ function BlockVisibilityUserRolePanelBodyControl(_ref) {
       key: props.clientId + role.value
     });
   }))), props.attributes.blockVisibility && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
-    class: "user-role-help-intro block-visibility-help-text"
+    className: "user-role-help-intro block-visibility-help-text"
   }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Select one more more roles to whom this block will be ' + props.attributes.blockVisibility + '. If no roles are selected, this block will be ' + props.attributes.blockVisibility + ' regardless of a user\'s role.', 'block-visibility-user-role')));
 }
 
