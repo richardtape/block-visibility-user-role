@@ -13,11 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets', 30 );
-
-if ( function_exists( 'gutenberg_use_widgets_block_editor' ) && gutenberg_use_widgets_block_editor() ) {
-	add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\enqueue_editor_assets' );
-}
+// Use the content_visibility_enqueue_editor_assets action to load our assets so we know we're loading when and where we should be.
+add_action( 'content_visibility_enqueue_editor_assets', __NAMESPACE__ . '\\enqueue_editor_assets', 30 );
 
 /**
  * Enqueue script and style assets used in the editor.
@@ -25,22 +22,6 @@ if ( function_exists( 'gutenberg_use_widgets_block_editor' ) && gutenberg_use_wi
  * @since 1.0.0
  */
 function enqueue_editor_assets() { // phpcs:ignore
-
-	if ( ! is_admin() ) {
-		return;
-	}
-
-	$screens = array(
-		'post',
-		'page',
-		'appearance_page_gutenberg-widgets',
-	);
-
-	$screens = apply_filters( 'block_visibility_enqueue_editor_assets_screens', $screens );
-
-	if ( ! in_array( get_current_screen()->id, array_values( $screens ), true ) ) {
-		return;
-	}
 
 	wp_register_script(
 		'block-visibility-user-role',
@@ -57,6 +38,7 @@ function enqueue_editor_assets() { // phpcs:ignore
 		true
 	);
 
+	// Generate a list of public roles and pass them to our JavaScript.
 	$roles      = get_editable_roles();
 	$role_names = array();
 
