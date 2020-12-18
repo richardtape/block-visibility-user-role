@@ -1,5 +1,5 @@
 {
-  "name": "block-visibility-user-role",
+  "name": "content-visibility-user-role",
   "version": "0.1.0",
   "description": "Decide which roles can see your blocks.",
   "main": "build/index.js",

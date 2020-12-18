@@ -1,10 +1,10 @@
-.block-visibility-user-role-control {
+.content-visibility-user-role-control {
   display: block;
   clear: both;
   width: 100%;
   margin: 0; }
 
-.block-visibility-controls .block-visibility-user-authenticated-control .components-radio-control__option {
+.content-visibility-controls .content-visibility-user-authenticated-control .components-radio-control__option {
   width: 100%; }
 
 

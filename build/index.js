@@ -196,10 +196,10 @@ module.exports = _defineProperty;
 
 /***/ }),
 
-/***/ "./src/controls/block-visibility-role-checkbox.js":
-/*!********************************************************!*\
-  !*** ./src/controls/block-visibility-role-checkbox.js ***!
-  \********************************************************/
+/***/ "./src/controls/content-visibility-role-checkbox.js":
+/*!**********************************************************!*\
+  !*** ./src/controls/content-visibility-role-checkbox.js ***!
+  \**********************************************************/
 /*! exports provided: CheckboxGroupCheckbox */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -228,17 +228,17 @@ var CheckboxGroupCheckbox = function CheckboxGroupCheckbox(data) {
 
   var roleSlug = role.value; // What data has been persisted in the db?
 
-  var persistedData = props.attributes.blockVisibilityRules; // If we have persisted data for this role, and it is set to "1" then the checkbox should be checked
+  var persistedData = props.attributes.contentVisibilityRules; // If we have persisted data for this role, and it is set to "1" then the checkbox should be checked
   // otherwise we fall back to whatever isChecked is which will change when someone alters the value of the checkbox
 
-  var thisChecked = persistedData.hasOwnProperty('userRole') && persistedData.userRole.hasOwnProperty(roleSlug) && '1' === props.attributes.blockVisibilityRules.userRole[roleSlug];
+  var thisChecked = persistedData.hasOwnProperty('userRole') && persistedData.userRole.hasOwnProperty(roleSlug) && '1' === props.attributes.contentVisibilityRules.userRole[roleSlug];
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["CheckboxControl"], {
     label: role.label,
     checked: thisChecked,
     onChange: function onChange(isChecked) {
       props.setAttributes({
-        blockVisibilityRules: _objectSpread(_objectSpread({}, props.attributes.blockVisibilityRules), {}, {
-          userRole: _objectSpread(_objectSpread({}, props.attributes.blockVisibilityRules.userRole), {}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, roleSlug, isChecked ? '1' : '0'))
+        contentVisibilityRules: _objectSpread(_objectSpread({}, props.attributes.contentVisibilityRules), {}, {
+          userRole: _objectSpread(_objectSpread({}, props.attributes.contentVisibilityRules.userRole), {}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({}, roleSlug, isChecked ? '1' : '0'))
         })
       });
     }
@@ -247,10 +247,10 @@ var CheckboxGroupCheckbox = function CheckboxGroupCheckbox(data) {
 
 /***/ }),
 
-/***/ "./src/controls/block-visibility-user-role-panel-body.js":
-/*!***************************************************************!*\
-  !*** ./src/controls/block-visibility-user-role-panel-body.js ***!
-  \***************************************************************/
+/***/ "./src/controls/content-visibility-user-role-panel-body.js":
+/*!*****************************************************************!*\
+  !*** ./src/controls/content-visibility-user-role-panel-body.js ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -264,14 +264,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _block_visibility_role_checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block-visibility-role-checkbox */ "./src/controls/block-visibility-role-checkbox.js");
+/* harmony import */ var _content_visibility_role_checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./content-visibility-role-checkbox */ "./src/controls/content-visibility-role-checkbox.js");
 
 
 
 
 
 
-function BlockVisibilityUserRolePanelBodyControl(_ref) {
+function ContentVisibilityUserRolePanelBodyControl(_ref) {
   var instanceId = _ref.instanceId,
       props = _ref.props;
   // Fetch the  roles from PHP
@@ -280,36 +280,36 @@ function BlockVisibilityUserRolePanelBodyControl(_ref) {
 
   var id = "bv-roles-".concat(instanceId);
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["PanelBody"], {
-    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('User Role', 'block-visibility-user-role'),
+    title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('User Role', 'content-visibility-user-role'),
     initialOpen: false,
-    className: "block-visibility-control-panel block-visibility-user-role-controls"
+    className: "content-visibility-control-panel content-visibility-user-role-controls"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", null, userRoles.map(function (role) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_block_visibility_role_checkbox__WEBPACK_IMPORTED_MODULE_4__["CheckboxGroupCheckbox"], {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_content_visibility_role_checkbox__WEBPACK_IMPORTED_MODULE_4__["CheckboxGroupCheckbox"], {
       name: id,
       id: id,
       props: props,
       role: role,
       key: props.clientId + role.value
     });
-  }))), props.attributes.blockVisibility && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
-    className: "user-role-help-intro block-visibility-help-text"
-  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Select one more more roles to whom this block will be ' + props.attributes.blockVisibility + '. If no roles are selected, this block will be ' + props.attributes.blockVisibility + ' regardless of a user\'s role.', 'block-visibility-user-role')));
+  }))), props.attributes.contentVisibility && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+    className: "user-role-help-intro content-visibility-help-text"
+  }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('Select one more more roles to whom this block will be ' + props.attributes.contentVisibility + '. If no roles are selected, this block will be ' + props.attributes.contentVisibility + ' regardless of a user\'s role.', 'content-visibility-user-role')));
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["withInstanceId"])(BlockVisibilityUserRolePanelBodyControl));
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__["withInstanceId"])(ContentVisibilityUserRolePanelBodyControl));
 
 /***/ }),
 
-/***/ "./src/controls/block-visibility-user-role.js":
-/*!****************************************************!*\
-  !*** ./src/controls/block-visibility-user-role.js ***!
-  \****************************************************/
-/*! exports provided: BlockVisibilityUserRoleControl */
+/***/ "./src/controls/content-visibility-user-role.js":
+/*!******************************************************!*\
+  !*** ./src/controls/content-visibility-user-role.js ***!
+  \******************************************************/
+/*! exports provided: ContentVisibilityUserRoleControl */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BlockVisibilityUserRoleControl", function() { return BlockVisibilityUserRoleControl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContentVisibilityUserRoleControl", function() { return ContentVisibilityUserRoleControl; });
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -322,7 +322,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _block_visibility_user_role_panel_body__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./block-visibility-user-role-panel-body */ "./src/controls/block-visibility-user-role-panel-body.js");
+/* harmony import */ var _content_visibility_user_role_panel_body__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./content-visibility-user-role-panel-body */ "./src/controls/content-visibility-user-role-panel-body.js");
 
 
 
@@ -335,48 +335,48 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-function BlockVisibilityUserRoleControl(data) {
+function ContentVisibilityUserRoleControl(data) {
   var _data = _objectSpread({}, data),
       props = _data.props;
 
-  var rulesEnabled = props.attributes.blockVisibilityRules.blockVisibilityRulesEnabled;
-  var blockVisibility = props.attributes.hasOwnProperty('blockVisibility');
+  var rulesEnabled = props.attributes.contentVisibilityRules.contentVisibilityRulesEnabled;
+  var contentVisibility = props.attributes.hasOwnProperty('contentVisibility');
 
-  if (!rulesEnabled || !blockVisibility) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Disabled"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_block_visibility_user_role_panel_body__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  if (!rulesEnabled || !contentVisibility) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Disabled"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_content_visibility_user_role_panel_body__WEBPACK_IMPORTED_MODULE_6__["default"], {
       props: props
     }));
   }
 
-  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_block_visibility_user_role_panel_body__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_content_visibility_user_role_panel_body__WEBPACK_IMPORTED_MODULE_6__["default"], {
     props: props
   });
 }
 /**
- * Render the <BlockVisibilityUserRoleControl> component by adding
+ * Render the <ContentVisibilityUserRoleControl> component by adding
  * it to the block-visibility-extra-controls Fill.
  *
- * @return {Object} A Fill component wrapping the BlockVisibilityUserRoleControl component.
+ * @return {Object} A Fill component wrapping the ContentVisibilityUserRoleControl component.
  */
 
-function BlockVisibilityUserRoleFill() {
+function ContentVisibilityUserRoleFill() {
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["Fill"], {
-    name: "block-visibility-extra-controls"
+    name: "content-visibility-extra-controls"
   }, function (fillProps) {
-    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockVisibilityUserRoleControl, {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ContentVisibilityUserRoleControl, {
       props: fillProps
     });
   });
 } // Add our component to the Slot provided by BlockVisibilityControls
 
 
-Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__["registerPlugin"])('block-visibility-02-user-role-fill', {
-  render: BlockVisibilityUserRoleFill
+Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_4__["registerPlugin"])('content-visibility-02-user-role-fill', {
+  render: ContentVisibilityUserRoleFill
 }); // Register our visibility rule with the main plugin
 
-Object(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_5__["addFilter"])('blockVisibility.defaultBlockVisibilityRules', 'block-visibility-user-role/block-visibility-rules', registerBlockVisibilityRule);
+Object(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_5__["addFilter"])('contentVisibility.defaultContentVisibilityRules', 'content-visibility-user-role/block-visibility-rules', registerContentVisibilityRule);
 
-function registerBlockVisibilityRule(defaultRules) {
+function registerContentVisibilityRule(defaultRules) {
   defaultRules.userRole = {};
   return defaultRules;
 }
@@ -407,7 +407,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_editor_scss__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _controls_block_visibility_user_role__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controls/block-visibility-user-role */ "./src/controls/block-visibility-user-role.js");
+/* harmony import */ var _controls_content_visibility_user_role__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controls/content-visibility-user-role */ "./src/controls/content-visibility-user-role.js");
 
 
 

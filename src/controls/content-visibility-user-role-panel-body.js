@@ -2,9 +2,9 @@ import { PanelBody, PanelRow } from '@wordpress/components';
 import { withInstanceId } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 
-import { CheckboxGroupCheckbox }  from './block-visibility-role-checkbox';
+import { CheckboxGroupCheckbox }  from './content-visibility-role-checkbox';
 
-function BlockVisibilityUserRolePanelBodyControl( { instanceId, props } ) {
+function ContentVisibilityUserRolePanelBodyControl( { instanceId, props } ) {
 
     // Fetch the  roles from PHP
     const userRoles = BlockVisibilityUserRole.roles;
@@ -16,9 +16,9 @@ function BlockVisibilityUserRolePanelBodyControl( { instanceId, props } ) {
 
     return (
         <PanelBody
-            title={ __( 'User Role', 'block-visibility-user-role' ) }
+            title={ __( 'User Role', 'content-visibility-user-role' ) }
             initialOpen={ false }
-            className="block-visibility-control-panel block-visibility-user-role-controls"
+            className="content-visibility-control-panel content-visibility-user-role-controls"
         >
             <PanelRow>
                 <ul>
@@ -30,12 +30,12 @@ function BlockVisibilityUserRolePanelBodyControl( { instanceId, props } ) {
                 </ul>
             </PanelRow>
 
-            { props.attributes.blockVisibility && (
-                <p className="user-role-help-intro block-visibility-help-text">{ __( 'Select one more more roles to whom this block will be ' + props.attributes.blockVisibility + '. If no roles are selected, this block will be ' + props.attributes.blockVisibility + ' regardless of a user\'s role.', 'block-visibility-user-role' ) }</p>
+            { props.attributes.contentVisibility && (
+                <p className="user-role-help-intro content-visibility-help-text">{ __( 'Select one more more roles to whom this block will be ' + props.attributes.contentVisibility + '. If no roles are selected, this block will be ' + props.attributes.contentVisibility + ' regardless of a user\'s role.', 'content-visibility-user-role' ) }</p>
             ) }
         </PanelBody>
     );
 
 }
 
-export default withInstanceId( BlockVisibilityUserRolePanelBodyControl );
+export default withInstanceId( ContentVisibilityUserRolePanelBodyControl );

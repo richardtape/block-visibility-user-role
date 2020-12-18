@@ -24,7 +24,7 @@ add_action( 'content_visibility_enqueue_editor_assets', __NAMESPACE__ . '\\enque
 function enqueue_editor_assets() { // phpcs:ignore
 
 	wp_register_script(
-		'block-visibility-user-role',
+		'content-visibility-user-role',
 		plugins_url( '/build/index.js', dirname( __FILE__ ) ),
 		array(
 			'wp-blocks',
@@ -53,15 +53,15 @@ function enqueue_editor_assets() { // phpcs:ignore
 		'roles' => $role_names,
 	);
 
-	wp_localize_script( 'block-visibility-user-role', 'BlockVisibilityUserRole', $block_visibility_user_role_args );
+	wp_localize_script( 'content-visibility-user-role', 'BlockVisibilityUserRole', $block_visibility_user_role_args );
 
-	wp_enqueue_script( 'block-visibility-user-role' );
+	wp_enqueue_script( 'content-visibility-user-role' );
 
-	wp_enqueue_style( 'block-visibility-user-role-panel', plugins_url( 'build/index.css', dirname( __FILE__ ) ) );
+	wp_enqueue_style( 'content-visibility-user-role-panel', plugins_url( 'build/index.css', dirname( __FILE__ ) ) );
 
 }//end enqueue_editor_assets()
 
-add_filter( 'block_visibility_rule_types_and_callbacks', __NAMESPACE__ . '\\add_rule_type_and_callback' );
+add_filter( 'content_visibility_rule_types_and_callbacks', __NAMESPACE__ . '\\add_rule_type_and_callback' );
 
 /**
  * Register our rule type to enable us to provide the logic callback.
