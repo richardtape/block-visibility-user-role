@@ -1,18 +1,17 @@
 <?php
-
 /**
- * Content Visibility User Role Add-On
+ * Content Visibility User Role
  *
- * @package     BlockVisibilityUserRole
+ * @package     ContentVisibilityUserRole
  * @author      Richard Tape
  * @copyright   2019 Richard Tape
  * @license     GPL-2.0+
  *
  * @wordpress-plugin
- * Plugin Name: Content Visibility User Role Add-On
- * Plugin URI:  https://richardtape.com
- * Description: Determine which user role(s) can see the blocks of your choosing.
- * Version:     1.0.0
+ * Plugin Name: Content Visibility User Role
+ * Plugin URI:  https://richardtape.com/content-visibility/
+ * Description: [Content Visibility Add-On] Determine which user role(s) can see the content blocks of your choosing.
+ * Version:     0.1.0
  * Author:      Richard Tape
  * Author URI:  https://richardtape.com
  * Text Domain: content-visibility-user-role
