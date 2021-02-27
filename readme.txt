@@ -4,7 +4,7 @@ Donate link: https://girlswhocode.com/
 Tags: block, content, visibility, user, users, role, roles, contentvisibility
 Requires at least: 5.0
 Tested up to: 5.6.2
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -39,7 +39,7 @@ Let me know: [https://github.com/richardtape/content-visibility-user-role/issues
 
 == Changelog ==
 
-= 0.1.0 =
+= 0.1.1 =
 * First public release. Set start and/or end times for when your content blocks will be shown.
 
 == Upgrade Notice ==
