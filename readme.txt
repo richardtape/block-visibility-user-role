@@ -1,7 +1,7 @@
 === Content Visibility User Role ===
 Contributors: iamfriendly
 Donate link: https://girlswhocode.com/
-Tags: block, content, visibility, user, users, role, roles, content-visibility
+Tags: block, content, visibility, user, users, role, roles, contentvisibility
 Requires at least: 5.0
 Tested up to: 5.6.2
 Stable tag: 0.1.0
