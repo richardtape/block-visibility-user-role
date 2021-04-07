@@ -3,8 +3,8 @@ Contributors: iamfriendly
 Donate link: https://girlswhocode.com/
 Tags: block, content, visibility, user, users, role, roles, contentvisibility
 Requires at least: 5.0
-Tested up to: 5.6.2
-Stable tag: 0.1.1
+Tested up to: 5.7.0
+Stable tag: 0.1.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,6 +38,10 @@ Let me know: [https://github.com/richardtape/content-visibility-user-role/issues
 1. Showing the content visibility user role controls in the content editor sidebar
 
 == Changelog ==
+
+= 0.1.2 =
+* WP 5.7.0 compatibility.
+* Updated tags to make finding add-ons easier from main plugin.
 
 = 0.1.1 =
 * First public release. Set start and/or end times for when your content blocks will be shown.
