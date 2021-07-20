@@ -265,6 +265,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _content_visibility_role_checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./content-visibility-role-checkbox */ "./src/controls/content-visibility-role-checkbox.js");
+/* harmony import */ var _helpers_has_rules__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../helpers/has-rules */ "./src/helpers/has-rules.js");
+
 
 
 
@@ -279,10 +281,11 @@ function ContentVisibilityUserRolePanelBodyControl(_ref) {
   // Each role object looks like: {label: "Administrator", value: "administrator"}
 
   var id = "bv-roles-".concat(instanceId);
+  var hasRulesClass = Object(_helpers_has_rules__WEBPACK_IMPORTED_MODULE_5__["default"])(props, 'userRole') ? ' has-active-rules' : '';
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["PanelBody"], {
     title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])('User Role', 'content-visibility-user-role'),
     initialOpen: false,
-    className: "content-visibility-control-panel content-visibility-user-role-controls"
+    className: "content-visibility-control-panel content-visibility-user-role-controls" + hasRulesClass
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["PanelRow"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", null, userRoles.map(function (role) {
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_content_visibility_role_checkbox__WEBPACK_IMPORTED_MODULE_4__["CheckboxGroupCheckbox"], {
       name: id,
@@ -391,6 +394,59 @@ function registerContentVisibilityRule(defaultRules) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/helpers/has-rules.js":
+/*!**********************************!*\
+  !*** ./src/helpers/has-rules.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__);
+
+/**
+ * Determine if the passed block props contain rules of the passed type.
+ *
+ * @param {object} props The currently selected block's props.
+ * @param {string} type The type of the rules i.e. userAuthenticated or specialPage (or ones from add-ons).
+ *
+ * @return {bool} true if the passed props contain non-empty rules of the passed type. False otherwise.
+ */
+
+function hasRules(props, type) {
+  if (!props.attributes.contentVisibilityRules) {
+    return false;
+  }
+
+  if (!props.attributes.contentVisibilityRules[type]) {
+    return false;
+  } // Default to false. Passed through a filter later.
+
+
+  var hasRules = false;
+
+  switch (type) {
+    case 'userRole':
+      if (props.attributes.contentVisibilityRules[type] && Object.keys(props.attributes.contentVisibilityRules[type]).length !== 0) {
+        hasRules = true;
+      }
+
+      break;
+
+    default:
+      break;
+  }
+
+  return Object(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__["applyFilters"])('content-visibility-has-rules', hasRules, props, type);
+} // end hasRules()
+
+
+/* harmony default export */ __webpack_exports__["default"] = (hasRules);
 
 /***/ }),
 

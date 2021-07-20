@@ -3,6 +3,7 @@ import { withInstanceId } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 
 import { CheckboxGroupCheckbox }  from './content-visibility-role-checkbox';
+import hasRules from '../helpers/has-rules';
 
 function ContentVisibilityUserRolePanelBodyControl( { instanceId, props } ) {
 
@@ -13,12 +14,13 @@ function ContentVisibilityUserRolePanelBodyControl( { instanceId, props } ) {
     // Each role object looks like: {label: "Administrator", value: "administrator"}
 
     const id = `bv-roles-${ instanceId }`;
+    let hasRulesClass = ( hasRules( props, 'userRole' ) ) ? ' has-active-rules' : '';
 
     return (
         <PanelBody
             title={ __( 'User Role', 'content-visibility-user-role' ) }
             initialOpen={ false }
-            className="content-visibility-control-panel content-visibility-user-role-controls"
+            className={"content-visibility-control-panel content-visibility-user-role-controls" + hasRulesClass}
         >
             <PanelRow>
                 <ul>
