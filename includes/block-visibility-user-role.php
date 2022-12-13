@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Main loader file for Content Visibility User Role Add-on.
  *
@@ -87,7 +86,9 @@ function add_rule_type_and_callback( $default_rule_types_and_callbacks ) {
 }//end add_rule_type_and_callback()
 
 /**
- * Undocumented function
+ * Determine if the passed block should be shown based on the rules that have been selected.
+ * In this case, if there are role-based rules, check to see if the current user is in the
+ * roles list approved by this block.
  *
  * @param array  $rule_value Which roles are selected for this block.
  * @param string $block_visibility Whether the block should be shown or hidden if the rule is true.
