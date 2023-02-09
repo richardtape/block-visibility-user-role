@@ -11,7 +11,7 @@
  * Plugin Name: Content Visibility User Role
  * Plugin URI:  https://richardtape.com/content-visibility/
  * Description: [Content Visibility Add-On] Determine which user role(s) can see the content blocks of your choosing.
- * Version:     0.1.5
+ * Version:     0.1.6
  * Author:      Richard Tape
  * Author URI:  https://richardtape.com
  * Text Domain: content-visibility-user-role
